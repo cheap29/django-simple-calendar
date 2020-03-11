@@ -1,10 +1,52 @@
 import datetime
 from django.shortcuts import redirect, render
 from django.views import generic
-from .forms import BS4ScheduleForm, SimpleScheduleForm
-from .models import Schedule
+from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
+from .forms import BS4ScheduleForm, SimpleScheduleForm, MemoForm
+from .models import Schedule, Memo
 from . import mixins
 
+
+def index(request):
+    return render(request, 'index.html')
+
+
+def memo(request):
+    memos = Memo.objects.all().order_by('-updated_datetime')
+    return render(request, 'app/memo.html', { 'memos': memos })
+
+def memoCreate(request):
+    if request.method == "POST":
+        form = MemoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('app:index')
+    else:   
+        form = MemoForm
+    return render(request, 'app/memo_create.html', {'form': form })
+    
+def memoDetail(request, memo_id):
+    memo = get_object_or_404(Memo, id=memo_id)
+    return render(request, 'app/memo_detail.html', {'memo': memo})
+    
+def memoEdit(request, memo_id):
+    memo = get_object_or_404(Memo, id=memo_id)
+    form = MemoForm(instance=memo)
+    return render(request, 'app/memo_edit.html', {'form': form, 'memo':memo })
+
+@require_POST
+def memoDelete(request, memo_id):
+    memo = get_object_or_404(Memo, id=memo_id)
+    memo.delete()
+    return redirect('app:index')
+
+
+@require_POST
+def scheduleDelete(request, schedule_id):
+    schedule = get_object_or_404(Schedule, id=schedule_id)
+    schedule.delete()
+    return redirect('app:index')
 
 class MonthCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
     """月間カレンダーを表示するビュー"""

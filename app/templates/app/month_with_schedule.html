@@ -42,7 +42,10 @@
                     {% endif %}
 
                     {% for schedule in schedules %}
-                        <p>{{ schedule.summary }}</p>
+                    <p>{{ schedule.description }}({{ schedule.summary }})</p>
+                    <form method="post" action="{% url 'app:schedule_delete' schedule.pk %}">{% csrf_token %}
+                        <button class="memo-btn-style btn-delete" style="color:#b80d57;font-size: 0.8rem;" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+                    </form>
                     {% endfor %}
                 </div>
                 </td>

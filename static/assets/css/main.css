@@ -1,0 +1,143 @@
+/*!
+
+=========================================================
+* Dashboard - v1.0.1
+=========================================================
+
+*/
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: 'yasashisa';
+  src: url('../fonts/yasashisa.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "yasashisa", sans-serif;
+  box-sizing: content-box;
+}
+
+a,button{
+  text-decoration: none;
+  color:#333333 !important;
+
+}
+
+a:hover,a:focus,button:hover{
+  opacity: 0.7;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+button[type="submit"]{
+  color:#ffffff !important;
+}
+
+table tr td{
+  font-size: 0.8rem;
+}
+
+table tr td p{
+  font-size: 0.8rem;
+  padding-bottom: 0;
+  margin-bottom: 0.3rem;
+  word-wrap: normal;
+  word-break: break-all;
+  width: 100%;
+}
+
+.memo-btn-style.btn-delete{
+  background-color: #b80d57;
+}
+
+.cls-btn-horizon{
+  display: flex;
+}
+
+.container{
+  padding:30px 0;
+  margin: 0 40px;
+}
+
+#base-container{
+  position: relative;
+  display: flex;
+}
+#base-container-side{
+  position: fixed;
+  top:40px;
+  left:0;
+  overflow: hidden;
+  width: 260px;
+  height: 100%;
+  min-height: 90vh;
+}
+#id_user{
+  text-align: center;
+  width: 90%;
+  padding: 10px;
+}
+#base-container-main{
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  padding:10px;
+  margin-left: 300px;
+}
+#id_memo{
+
+}
+#id_calender{
+  padding:0;
+}
+.container.mt-3{
+  margin:0;
+}
+
+a.cls-back-page{
+
+}
+
+.fa-address-card:before{
+  font-size: 3rem;
+}
+
+.cls-block-style{
+  border: 1px solid #999999;
+  margin: 16px 0;
+  overflow: auto;
+  
+}
+
+.memo-btn-style{
+  padding: 4px 8px;
+  background-color: #bae5e5;
+  color:#333333;
+  border:0;
+  margin:3px;
+}
+
+.memo-card-style{
+  width: auto;
+  height: auto;
+  max-height: 220px;
+  max-width: 200px;
+  min-height: 100px;
+  min-width: 80px;
+  overflow: hidden;
+  background:#efefee;
+  margin: 1rem;
+  padding:0.5rem;
+  float: left;
+}

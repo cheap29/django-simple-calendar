@@ -25,13 +25,14 @@ SECRET_KEY = '+yw7(%++5pe*=k4tyc$+)-cnecwqv95kf+e1g77_yth2byf#9q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','10.39.241.175']
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'app.apps.AppConfig',  # カレンダーアプリ
+    'app.apps.AppConfig',  # アプリ
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,7 +116,17 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
+#############################################################
+# SRC: https://devcenter.heroku.com/articles/django-assets
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)

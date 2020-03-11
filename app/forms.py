@@ -1,6 +1,12 @@
 from django import forms
-from .models import Schedule
+from django.forms import ModelForm
+from .models import Schedule, Memo
 
+
+class MemoForm(ModelForm):
+    class Meta:
+        model = Memo
+        fields = ['title', 'text']
 
 class BS4ScheduleForm(forms.ModelForm):
     """Bootstrapに対応するためのModelForm"""
@@ -45,3 +51,4 @@ class SimpleScheduleForm(forms.ModelForm):
             }),
             'date': forms.HiddenInput,
         }
+
